@@ -24,7 +24,7 @@ db.connect((err)=>{
 const router = express.Router();
 
 router.get('/', (req,res) => {
-    let sql = 'SELECT * FROM posts'
+    let sql = 'SELECT * FROM posts LIMIT 100'
     let query = db.query(sql, (err,results) => {
         if(err) throw err;
         console.log(results);
