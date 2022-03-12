@@ -6,12 +6,16 @@ import usersroutes from './routes/users.js'
 import postroutes from './routes/posts.js'
 
 
+
 import mysql from "mysql";
 
 
+import cors from "cors";
 
 
 const app = express();
+app.use(cors());
+
 
 
 const PORT = 5000;

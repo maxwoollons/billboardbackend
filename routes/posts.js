@@ -1,5 +1,6 @@
 import express from "express";
 import mysql from "mysql";
+import cors from "cors";
 
 
 
@@ -21,7 +22,10 @@ db.connect((err)=>{
 
 
 
+
+
 const router = express.Router();
+router.use(cors())
 
 router.get('/', (req,res) => {
     let sql = 'SELECT * FROM posts LIMIT 100'
