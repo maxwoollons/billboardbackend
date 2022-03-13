@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2022 at 04:53 AM
+-- Generation Time: Mar 13, 2022 at 08:41 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -31,15 +31,17 @@ CREATE TABLE `posts` (
   `postid` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `content` varchar(200) NOT NULL,
-  `lastupdated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `lastupdated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `paid` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `posts`
 --
 
-INSERT INTO `posts` (`postid`, `user_id`, `content`, `lastupdated`) VALUES
-(1, 1, 'Hello', '2022-03-12 13:25:55');
+INSERT INTO `posts` (`postid`, `user_id`, `content`, `lastupdated`, `paid`) VALUES
+(1, 1, 'Hello', '2022-03-12 13:25:55', 0),
+(2, 1, 'post2', '2022-03-12 17:34:43', 0);
 
 -- --------------------------------------------------------
 
@@ -49,7 +51,7 @@ INSERT INTO `posts` (`postid`, `user_id`, `content`, `lastupdated`) VALUES
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
+  `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -58,7 +60,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`) VALUES
-(1, 'maxy', 'Not today');
+(1, 'max', 'NoTHanks'),
+(3, 'Max2', 'Test123');
 
 --
 -- Indexes for dumped tables
@@ -86,13 +89,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `postid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `postid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
