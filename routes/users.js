@@ -34,14 +34,6 @@ router.get('/', (req,res) => {
     })
 })
 
-router.get('/:id', (req,res) => {
-    let sql = `SELECT * FROM users WHERE ID = ${req.params.id}`
-    let query = db.query(sql, (err,results) => {
-        if(err) throw err;
-        console.log(results);
-        res.json(results);
-    })
-})
 
 router.put('/add',(req,res) => {
     let username = req.body.username;
@@ -53,6 +45,18 @@ router.put('/add',(req,res) => {
         res.json(results);
     })
 })
+
+
+router.get('/:int', (req,res) => {
+    let sql = `SELECT * FROM users WHERE ID = ${req.params.int}`
+    let query = db.query(sql, (err,results) => {
+        if(err) throw err;
+        console.log(results);
+        res.json(results);
+    })
+})
+
+
 
 
 export default router;
